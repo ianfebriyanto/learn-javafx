@@ -1,5 +1,7 @@
 package DivisiApps.Controller;
 
+import DivisiApps.Utilities.AlertUtil;
+import DivisiApps.Utilities.Contracts.ContractConfirmation;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -7,30 +9,34 @@ import javafx.scene.control.ButtonType;
 
 import java.util.Optional;
 
-public class RootLayoutController{
+public class RootLayoutController {
     @FXML
     private void about() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Tentang Aplikasi");
-        alert.setHeaderText("Aplikasi tentang management divisi");
-        alert.setContentText("Create, Read, Update, Delete");
-        alert.show();
+        AlertUtil.show(Alert.AlertType.INFORMATION,
+                "About Apps",
+                "Divisi Management Apps",
+                "You can manage Divisi using this apps and SQL Server database",
+                null);
     }
 
     @FXML
     private void exit() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 
-        alert.setTitle("Exit Confirmation");
-        alert.setHeaderText("Exit Confirmation");
-        alert.setContentText("Keluar aplikasi");
+        AlertUtil.show(Alert.AlertType.CONFIRMATION,
+                "Confirmation",
+                "Exit Comfirmation",
+                "Exit Application",
+                new ContractConfirmation() {
+                    @Override
+                    public void btnOK(Alert alert) {
+                        System.exit(0);
+                    }
 
-        Optional<ButtonType> confirmation = alert.showAndWait();
-
-        if (confirmation.get() == ButtonType.OK) {
-            System.exit(0);
-        } else {
-            alert.close();
-        }
+                    @Override
+                    public void btnCancel(Alert alert) {
+                        alert.close();
+                    }
+                });
     }
 }

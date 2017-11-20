@@ -53,4 +53,8 @@ public class AlertUtil {
     public static void close() {
         alert.close();
     }
+
+    public static void setTitle() {
+
+    }
 }
