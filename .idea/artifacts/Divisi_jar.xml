@@ -1,6 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="Divisi:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/Divisi_jar</output-path>
-    <root id="archive" name="Divisi_jar.jar" />
-  </artifact>
-</component>
