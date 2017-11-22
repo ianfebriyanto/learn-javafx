@@ -1,12 +1,17 @@
 package DivisiApps.DAO;
 
 import DivisiApps.Model.DivisiModel;
+import DivisiApps.Utilities.Contracts.ContractDBUtil;
 import DivisiApps.Utilities.Contracts.ContractSumbitForm;
 import DivisiApps.Utilities.DBUtil;
+import DivisiApps.Utilities.DBUtil2;
+import com.sun.rowset.CachedRowSetImpl;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import javax.annotation.Nullable;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -73,6 +78,36 @@ public class DAODivisi {
             throw e;
         }
     }
+
+   /* static ObservableList<DivisiModel> divisiModelObservableList;
+    public static ObservableList<DivisiModel> searchDivisi(String search, int jenis) throws SQLException, ClassNotFoundException {
+        String query = "SELECT * FROM divisi WHERE divisi LIKE ?";
+        DBUtil2.dbQuery(new ContractDBUtil() {
+            @Override
+            public void query(Connection connection, ResultSet resultSet, CachedRowSetImpl crs) {
+                try {
+                    PreparedStatement ps = connection.prepareStatement(query);
+                    ps.setString(1, "%" + search + "%");
+                    resultSet = ps.executeQuery(query);
+                    crs.populate(resultSet);
+                    divisiModelObservableList = getListDivisiFromResultSet(crs);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void closeConnection(Connection connection) {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }*/
 
     /**
      * for insert new Divisi
