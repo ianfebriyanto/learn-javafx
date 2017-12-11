@@ -201,6 +201,8 @@ public class DivisiController {
                                                 "Success",
                                                 namaDivisi + " berhasil dihapus",
                                                 null);
+                                        getListDivisi();
+
                                     }
 
                                     @Override
@@ -212,7 +214,6 @@ public class DivisiController {
                                                 null);
                                     }
                                 });
-                                getListDivisi();
                             } catch (SQLException e) {
                                 e.printStackTrace();
                             }

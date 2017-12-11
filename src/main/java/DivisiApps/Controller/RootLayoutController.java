@@ -1,15 +1,27 @@
 package DivisiApps.Controller;
 
+import DivisiApps.Main;
 import DivisiApps.Utilities.AlertUtil;
 import DivisiApps.Utilities.Contracts.ContractConfirmation;
 import javafx.application.Application;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.Optional;
 
 public class RootLayoutController {
+    public BorderPane rootLayout;
+
+    public void initialize() {
+
+    }
+
     @FXML
     private void about() {
         AlertUtil.show(Alert.AlertType.INFORMATION,
@@ -38,5 +50,25 @@ public class RootLayoutController {
                         alert.close();
                     }
                 });
+    }
+
+    @FXML
+    private void setting() {
+        rootLayout = Main.getRootLayout();
+
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(Main.class.getResource("/layout/setting/layout_main.fxml"));
+            AnchorPane anchorPane = (AnchorPane) fxmlLoader.load();
+            rootLayout.setCenter(anchorPane);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void divisi() {
+        Main main = new Main();
+        main.initDivisiLayout();
     }
 }

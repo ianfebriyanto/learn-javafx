@@ -1,5 +1,6 @@
 package DivisiApps;
 
+import DivisiApps.Controller.Login.LoginController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -19,22 +20,21 @@ public class Main extends Application {
 
     private static Stage primaryStage;
 
-    private BorderPane rootLayout;
+    private static BorderPane rootLayout;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Divisi Model");
-        initRootLayout();
-        initDivisiLayout();
+        initLoginLayout();
     }
 
     public static Stage getPrimaryStage() {
         return primaryStage;
     }
 
-    public static URL setResource(String src) {
-        return Main.class.getResource(src);
+    public static BorderPane getRootLayout() {
+        return rootLayout;
     }
 
     public void initRootLayout() {
@@ -45,7 +45,6 @@ public class Main extends Application {
             Scene scence = new Scene(rootLayout);
             primaryStage.setScene(scence);
             primaryStage.setResizable(false);
-
             primaryStage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -61,6 +60,25 @@ public class Main extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void initLoginLayout() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/layout/login/layout_main.fxml"));
+            AnchorPane loginLayout = (AnchorPane) fxmlLoader.load();
+
+            Scene scene = new Scene(loginLayout);
+            primaryStage.setScene(scene);
+            primaryStage.setResizable(false);
+            primaryStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void startApps() {
+        this.initRootLayout();
+        this.initDivisiLayout();
     }
 
     public static void main(String[] args) {

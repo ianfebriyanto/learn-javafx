@@ -20,7 +20,7 @@ public class DBUtil {
         return conn;
     }
 
-    public static ResultSet executeQuery(String query) throws SQLException{
+    public static ResultSet executeQuery(String query) throws SQLException {
         Statement stmt = null;
         ResultSet resultSet = null;
         CachedRowSet crs = null;
@@ -48,12 +48,26 @@ public class DBUtil {
         return crs;
     }
 
+    public static ResultSet dbExecuteQuery(String query) throws SQLException {
+        try {
+            connect();
+            Statement statement = conn.createStatement();
+            ResultSet data = statement.executeQuery(query);
+            return data;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
     /**
      * For insert, update and delete
+     *
      * @param query
      * @throws SQLException
      */
-    public static int dbExecuteUpdate(String query) throws SQLException{
+    public static int dbExecuteUpdate(String query) throws SQLException {
         Statement stmt;
         try {
             connect();

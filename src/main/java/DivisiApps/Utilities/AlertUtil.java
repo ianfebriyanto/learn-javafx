@@ -37,14 +37,14 @@ public class AlertUtil {
             alert.show();
         }
 
-        new Timer().scheduleAtFixedRate(new TimerTask() {
+        /*new Timer().scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
                 Platform.runLater(() -> {
                     alert.close();
                 });
             }
-        }, 10000, 1000);
+        }, 10000, 1000);*/
     }
 
     /**
