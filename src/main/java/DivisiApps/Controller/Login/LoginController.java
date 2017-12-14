@@ -12,8 +12,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
-import java.lang.management.ManagementFactory;
-
 public class LoginController {
     @FXML
     private TextField username;

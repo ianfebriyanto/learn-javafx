@@ -1,6 +1,7 @@
 package DivisiApps.Utilities;
 
 import com.sun.rowset.CachedRowSetImpl;
+import javafx.scene.control.Alert;
 
 import javax.sql.rowset.CachedRowSet;
 import java.sql.*;
@@ -88,6 +89,12 @@ public class DBUtil {
             }
             conn = DriverManager.getConnection(currentUri, username, password);
         } catch (SQLException e) {
+            AlertUtil.show(Alert.AlertType.ERROR,
+                    "Oops!",
+                    "Terjadi Kesalahan",
+                    "Tidak dapat melakukan koneksi dengan database.\n" +
+                            "Silahkan check kembali konfigurasi anda",
+                    null);
             e.printStackTrace();
         }
     }
